@@ -1,3 +1,3 @@
 #!/bin/bash
-cd /app/chat-asp-bin
-dotnet aspnetapp.dll
+cd /app/chat/wcf-bin
+dotnet chat-wcf.dll

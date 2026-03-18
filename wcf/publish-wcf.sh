@@ -1,2 +1,2 @@
 #!/bin/bash
-dotnet publish -c Release -o /chat-wcf-bin
+dotnet publish -c Release -o /chat/wcf-bin
