@@ -2,6 +2,9 @@
 ## Technologies:
   Docker\
   ASPP.NET CORE\
-  WCF
+  WCF\
+  Emacs\
+  TMUX
 
-[Chat project wiki](docs)
+## Building
+Run `scripts/init.sh` bash script to init TMUX workspace.
