@@ -1,13 +1,13 @@
-﻿using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System;
 using System.Threading.Tasks;
+using CoreWCF;
+using CoreWCF.Configuration;
+using CoreWCF.Description;
+using CoreWCF.Security;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+
 
 namespace chat_wcf
 {
@@ -15,22 +15,31 @@ namespace chat_wcf
     {
 	public const int HTTP_PORT = 8088;
         public const int HTTPS_PORT = 8443;
-	
+        
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
-        }
+            var builder = WebApplication.CreateBuilder(args);
+            builder.Services
+                .AddServiceModelServices()
+                .AddServiceModelMetadata()
+                .AddSingleton<IServiceBehavior, UseRequestHeadersForMetadataAddressBehavior>();
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-	    .UseKestrel(options =>
+            var app = builder.Build();
+
+            app.UseServiceModel(serviceBuilder =>
             {
-                options.ListenLocalhost(HTTP_PORT);
-                options.ListenLocalhost(HTTPS_PORT, listenOptions =>
-                {
-                    listenOptions.UseHttps();
-                });
-            })
-            .UseStartup<Startup>();
+                serviceBuilder
+                    .AddService<EchoService>()
+                    .AddServiceEndpoint<EchoService, IEchoService>(new BasicHttpBinding(), "/EchoService.svc");
+
+                    var serviceMetadataBehavior = app.Services.GetRequiredService<ServiceMetadataBehavior>();
+                    serviceMetadataBehavior.HttpGetEnabled = true;
+            });
+
+            app.MapGet("/", () => "Hello! Please post a SOAP message to me!");
+
+            app.Run();
+       }
+
     }
 }

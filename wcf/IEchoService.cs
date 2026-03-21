@@ -18,7 +18,7 @@ namespace chat_wcf
     }
 
     [ServiceContract]
-    public interface IService
+    public interface IEchoService
     {
         [OperationContract]
         string Echo(string text);

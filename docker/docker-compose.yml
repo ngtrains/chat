@@ -4,10 +4,9 @@ services:
     tty: true
     image: mcr.microsoft.com/dotnet/sdk:10.0-azurelinux3.0
     volumes:
-      - $HOME\Sources\chat\asp:/source/chat-asp
-      - $HOME\Sources\chat\asp-bin:/chat/asp
+      - $HOME\Sources\chat\asp:/source/chat/asp
+      - chat-bin:/chat
       - $HOME\Sources\chat\wcf:/source/chat/wcf
-      - $HOME\Sources\chat\wcf-bin:/wcf-bin
   runtime:
     container_name: aspnet-runtime
     tty: true
@@ -15,6 +14,6 @@ services:
     ports:
       - 80:8080
     volumes:
-      - $HOME\Sources\chat\asp-bin:/app/chat/asp
-      - $HOME\Sources\chat\wcf-bin:/app/chat/wcf
-    
+      - chat-bin:/app/chat
+volumes:
+  chat-bin:

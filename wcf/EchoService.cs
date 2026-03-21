@@ -4,9 +4,9 @@ using System.Runtime.Serialization;
 
 namespace chat_wcf
 {
-    public class Service : IService
+    public class EchoService : IEchoService
     {
-	public string Echo(string text)
+        public string Echo(string text)
         {
             System.Console.WriteLine($"Received {text} from client!");
             return text;
