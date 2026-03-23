@@ -38,7 +38,7 @@ namespace chat_wcf
 
             app.MapGet("/", () => "Hello! Please post a SOAP message to me!");
 
-            app.Run();
+            app.Run("http://localhost:" + HTTP_PORT);
        }
 
     }
