@@ -7,4 +7,6 @@
   TMUX
 
 ## Building
-Run `scripts/init.sh` bash script to init TMUX workspace.
+Run `scripts/init.sh` bash script to init TMUX workspace.\
+Select 4th option.\
+Visit [localhost](http://localhost/)
