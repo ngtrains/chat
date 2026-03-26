@@ -13,6 +13,11 @@ export RUNTIME_ASP=$(cat <<END
 END
 )
 
+export SDK_CHAT=$(cat <<END
+    cd /source/chat
+    dotnet publish -c Release
+END
+)
 
 export SDK_WCF=$(cat <<END
     cd /source/chat/wcf
@@ -35,10 +40,13 @@ tmux send-keys -t 'git' 'cd ~/Sources/chat/' C-m
 tmux new-window -t $session:1 -n 'scripts'
 tmux send-keys -t 'scripts' 'cd ~/Sources/chat/scripts && ./menu.sh' C-m
 
-tmux new-window -t $session:2 -n 'asp'
+tmux new-window -t $session:2 -n 'chat'
+tmux send-keys -t 'chat' 'cd ~/Sources/chat/docker' C-m
+
+tmux new-window -t $session:3 -n 'asp'
 tmux send-keys -t 'asp' 'cd ~/Sources/chat/scripts' C-m
 
-tmux new-window -t $session:3 -n 'wcf'
+tmux new-window -t $session:4 -n 'wcf'
 tmux send-keys -t 'wcf' 'cd ~/Sources/chat/scripts' C-m
 
 tmux attach -t $session:1

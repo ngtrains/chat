@@ -3,8 +3,7 @@
 PS3="Select action: "
 options=(
     "Docker compose up"
-    "Deploy asp"
-    "Deploy wcf"
+    "SDK bash"
     "Deploy chat"
     "Quit"
 )
@@ -16,18 +15,15 @@ do
             docker compose up -d
             ;;
         2)
-            tmux send-keys -t 'asp' 'cd ../docker && docker compose exec sdk bash -c "$SDK_ASP" && docker compose exec runtime bash -c "$RUNTIME_ASP"' C-m
+            tmux send-keys -t 'chat' 'cd ../docker && docker compose exec sdk bash' C-m
             ;;
         3)
             cd ../docker
-            tmux send-keys -t 'wcf' 'cd ../docker && docker compose exec sdk bash -c "$SDK_WCF" && docker compose exec runtime bash -c "$RUNTIME_WCF"' C-m
+            tmux send-keys -t 'chat' 'cd ../docker && docker compose exec sdk bash -c "$SDK_CHAT"' C-m
+            tmux send-keys -t 'wcf' 'cd ../docker && docker compose exec runtime bash -c "$RUNTIME_WCF"' C-m
+            tmux send-keys -t 'asp' 'cd ../docker && docker compose exec runtime bash -c "$RUNTIME_ASP"' C-m
             ;;
         4)
-            cd ../docker
-            tmux send-keys -t 'asp' 'cd ../docker && docker compose exec sdk bash -c "$SDK_ASP" && docker compose exec runtime bash -c "$RUNTIME_ASP"' C-m
-            tmux send-keys -t 'wcf' 'cd ../docker && docker compose exec sdk bash -c "$SDK_WCF" && docker compose exec runtime bash -c "$RUNTIME_WCF"' C-m
-            ;;
-        5)
             cd ../docker
             docker compose down
             break

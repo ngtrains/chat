@@ -1,0 +1,32 @@
+{
+  "providerId": "Microsoft.Tools.ServiceModel.Svcutil",
+  "version": "8.0.0",
+  "options": {
+    "inputs": [
+      "http://localhost:8088/EchoService.svc?wsdl"
+    ],
+    "namespaceMappings": [
+      "*, ServiceReference"
+    ],
+    "outputFile": "Reference.cs",
+    "references": [
+      "CoreWCF.Http, {CoreWCF.Http, 1.8.0}",
+      "CoreWCF.Primitives, {CoreWCF.Primitives, 1.8.0}",
+      "Microsoft.Bcl.AsyncInterfaces, {Microsoft.Bcl.AsyncInterfaces, 8.0.0}",
+      "Microsoft.Bcl.HashCode, {Microsoft.Bcl.HashCode, 6.0.0}",
+      "Microsoft.IdentityModel.Abstractions, {Microsoft.IdentityModel.Abstractions, 8.13.0}",
+      "Microsoft.IdentityModel.Logging, {Microsoft.IdentityModel.Logging, 8.13.0}",
+      "Microsoft.IdentityModel.Protocols, {Microsoft.IdentityModel.Protocols, 8.13.0}",
+      "Microsoft.IdentityModel.Protocols.WsFederation, {Microsoft.IdentityModel.Protocols.WsFederation, 8.13.0}",
+      "Microsoft.IdentityModel.Tokens, {Microsoft.IdentityModel.Tokens, 8.13.0}",
+      "Microsoft.IdentityModel.Tokens.Saml, {Microsoft.IdentityModel.Tokens.Saml, 8.13.0}",
+      "Microsoft.IdentityModel.Xml, {Microsoft.IdentityModel.Xml, 8.13.0}",
+      "System.DirectoryServices, {System.DirectoryServices, 8.0.0}",
+      "System.DirectoryServices.Protocols, {System.DirectoryServices.Protocols, 8.0.2}",
+      "System.Security.Cryptography.ProtectedData, {System.Security.Cryptography.ProtectedData, 8.0.0}",
+      "System.Web.Services.Description, {System.Web.Services.Description, 8.1.2}"
+    ],
+    "targetFramework": "net10.0",
+    "typeReuseMode": "All"
+  }
+}

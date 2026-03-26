@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/asp/">
+    <Project Path="asp/chat-asp.csproj" />
+  </Folder>
+  <Folder Name="/wcf/">
+    <Project Path="wcf/chat-wcf.csproj" />
+  </Folder>
+</Solution>
